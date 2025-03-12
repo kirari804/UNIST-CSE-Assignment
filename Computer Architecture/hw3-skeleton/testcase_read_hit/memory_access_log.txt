@@ -1,0 +1,2 @@
+0x10000510 0xAAAAAAAA  # Write data to address 0x10000510 (write miss -> fetch 0x10000500 block) 
+0x10000504             # Read from the same block (read hit expected)
