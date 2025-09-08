@@ -1,3 +1,0 @@
-/home/phuong/Downloads/adv_prog/CMakeFiles/midterm.dir
-/home/phuong/Downloads/adv_prog/CMakeFiles/edit_cache.dir
-/home/phuong/Downloads/adv_prog/CMakeFiles/rebuild_cache.dir
