@@ -1,0 +1,10 @@
+freq 0 300
+ampl 0 0.4
+freq 1 310
+ampl 1 0.4
+freq 2 320
+ampl 2 0.4
+freq 3 330
+ampl 3 0.4
+delay 1000
+quit

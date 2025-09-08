@@ -1,0 +1,3 @@
+/home/phuong/Downloads/adv_prog/hw1/a01/a01/CMakeFiles/a01.dir
+/home/phuong/Downloads/adv_prog/hw1/a01/a01/CMakeFiles/edit_cache.dir
+/home/phuong/Downloads/adv_prog/hw1/a01/a01/CMakeFiles/rebuild_cache.dir

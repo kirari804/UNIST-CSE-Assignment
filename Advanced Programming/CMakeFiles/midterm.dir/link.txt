@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/midterm.dir/midterm.cc.o -o midterm  /usr/lib/x86_64-linux-gnu/libSDL2.so -fsanitize=address 

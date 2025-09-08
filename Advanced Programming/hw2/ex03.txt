@@ -1,0 +1,14 @@
+freq 0 523.2511306011974
+freq 1 783.990871963499
+ampl 1 0.5
+delay 200
+ampl 1 0.6
+delay 200
+ampl 0 0.0
+delay 200
+freq 1 440.0
+ampl 1 1
+lowpass 1 12
+delay 200
+delay 200
+quit

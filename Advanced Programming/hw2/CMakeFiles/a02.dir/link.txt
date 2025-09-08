@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/a02.dir/a02.cc.o -o a02  /usr/lib/x86_64-linux-gnu/libSDL2.so -fsanitize=address 
