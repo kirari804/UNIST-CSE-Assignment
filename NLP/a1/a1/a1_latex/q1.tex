@@ -1,0 +1,79 @@
+\titledquestion{Matrix Derivatives in Jacobian Formulation}[22]
+
+Suppose that ${\mathbf{x}} \in {\mathbb{R}}^{n \times 1}$ is a column vector, defined as follows:
+\begin{equation}    
+\mathbf{x} = \begin{pmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{pmatrix}
+\end{equation}
+
+We now define a function of vector ${\mathbf{x}}$, i.e., ${\mathbf{y}} = {\mathbf{f}}\left({\mathbf{x}}\right) \in {\mathbb{R}}^{m \times 1}$.
+The Jacobian matrix, $\frac{ \partial {\mathbf{y}} }{\partial {\mathbf{x}} } \in {\mathbb{R}}^{m \times n}$ -- that is, the partial derivative of ${\mathbf{y}}$ with respect to ${\mathbf{x}}$ -- is given as follows:
+\begin{equation}
+   \frac{\partial \mathbf{y}}{\partial \mathbf{x}} = 
+\begin{pmatrix}
+\frac{\partial y_1}{\partial x_1} & \frac{\partial y_1}{\partial x_2} & \cdots & \frac{\partial y_1}{\partial x_n} \\
+\vdots & \vdots & \ddots & \vdots \\
+\frac{\partial y_m}{\partial x_1} & \frac{\partial y_m}{\partial x_2} & \cdots & \frac{\partial y_m}{\partial x_n}
+\end{pmatrix}
+\end{equation}
+
+In addition, when ${\mathbf{X}} \in {\mathbb{R}}^{n \times m}$ is a parameter matrix and $y = f({\mathbf{X}})$ is a scalar function of ${\mathbf{X}}$, the Jacobian matrix $\frac{ \partial y }{\partial {\mathbf{X}} } \in {\mathbb{R}}^{m \times n}$ is defined as follows:
+\begin{equation}
+\frac{\partial y}{\partial \mathbf{X}} =
+\begin{pmatrix}
+\frac{\partial y}{\partial x_{11}} & \frac{\partial y}{\partial x_{21}} & \cdots & \frac{\partial y}{\partial x_{n1}} \\
+\vdots & \vdots & \ddots & \vdots \\
+\frac{\partial y}{\partial x_{1m}} & \frac{\partial y}{\partial x_{2m}} & \cdots & \frac{\partial y}{\partial x_{nm}}
+\end{pmatrix}
+\end{equation}
+
+\begin{parts}
+
+    \part[3] Suppose that ${\mathbf{z}} \in {\mathbb{R}}^{k}$, ${\mathbf{y}} \in {\mathbb{R}}^n$, and ${\mathbf{x}} \in {\mathbb{R}}^m$ are given as follows:
+    \begin{eqnarray}
+        {\mathbf{z}}&=& f({\mathbf{y}}) \nonumber \\
+        {\mathbf{y}}&=& g({\mathbf{x}}) \nonumber \\
+    \end{eqnarray}
+    
+    Prove that the following chain rule holds:
+    \begin{eqnarray}
+        \frac{ \partial {\mathbf{z}}}{\partial  {\mathbf{x}}} = \frac{ \partial {\mathbf{z}} }{ \partial {\mathbf{y}}} \frac{\partial  {\mathbf{y}} }{\partial {\mathbf{x}} } 
+    \end{eqnarray}
+
+    Note: Please specify the shapes of all matrices when they appear in the derivation.
+
+    \part[3] Prove that if $\mathbf{y} = \mathbf{A}\mathbf{x}$, where $\mathbf{y} \in \mathbb{R}^{m \times 1}$, $\mathbf{x} \in \mathbb{R}^{n \times 1}$, and $\mathbf{A} \in \mathbb{R}^{m \times n}$, then the Jacobian matrix of $\mathbf{y}$ with respect to $\mathbf{x}$ is given by:
+    \begin{eqnarray}
+        \frac{\partial \mathbf{y}}{\partial \mathbf{x}} = \mathbf{A}
+    \end{eqnarray}
+
+   \part[3] Prove that if $\mathbf{y} = f\left(\mathbf{x}\right)$, where $\mathbf{x} \in \mathbb{R}^{n \times 1}$ and $f$ is an elementwise function, then the Jacobian matrix of $\mathbf{y}$ with respect to $\mathbf{x}$ is given by:
+    \begin{eqnarray}
+        \frac{\partial \mathbf{y}}{\partial \mathbf{x}} = \mathrm{diag} \left( f'(\mathbf{x}) \right)
+    \end{eqnarray}
+
+    \part[3] If  $\mathbf{z} = f\left( \mathbf{U}  g \left( \mathbf{W} \mathbf{x} \right) \right)$, where $\mathbf{z} \in \mathbb{R}^{k \times 1}$, $\mathbf{U} \in \mathbb{R}^{k \times n}$, $\mathbf{W} \in \mathbb{R}^{n \times m}$, $\mathbf{x} \in \mathbb{R}^{m \times 1}$, and $f$ and $g$ are elementwise functions, what is the Jacobian matrix $\frac{\partial \mathbf{z}}{\partial \mathbf{x}}$?
+    \begin{equation}  
+    \frac{\partial {\mathbf{z}}} {\partial {\mathbf{x}}} = 
+    \end{equation}
+
+    \part[5] Prove that if $J = h\left( \mathbf{z} \right)$ and $\mathbf{z} = \mathbf{W} \mathbf{x}$, where $\mathbf{z} \in \mathbb{R}^{m \times 1}$ and $\mathbf{x} \in \mathbb{R}^{n \times 1}$, then the Jacobian matrix of $J$ with respect to $\mathbf{W}$ is given by:
+    \begin{eqnarray}
+\frac{\partial J}{\partial \mathbf{W}} = \mathbf{x} \frac{\partial J}{\partial \mathbf{z}}
+  \end{eqnarray}
+
+\part[5] Prove that if the cross-entropy loss $CE$ is expressed as:
+\begin{eqnarray}    
+J &=& CE(\mathbf{y}, \hat{\mathbf{y}}) = -\mathbf{y}^T \log \hat{\mathbf{y}} \nonumber \\
+\hat{\mathbf{y}} &=& \mathrm{softmax}(\mathbf{z})
+\end{eqnarray}
+where ${\mathbf{y}} \in {\mathbb{R}}^{k \times 1}$ is the one-hot label vector and ${\mathbf{z}} \in {\mathbb{R}}^{k \times 1}$ are the logits, then the Jacobian matrix of the cross-entropy loss $J$ with respect to the logits $\mathbf{z}$ is given by:
+\begin{eqnarray}    
+\frac{\partial J}{\partial \mathbf{z}} = (\hat{\mathbf{y}} - \mathbf{y})^T
+\end{eqnarray}
+
+\end{parts}

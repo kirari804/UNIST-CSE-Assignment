@@ -1,0 +1,98 @@
+\titledquestion{Naive Bayes Text Classification using PyTorch}[56]
+\lstdefinelanguage{console}{
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  backgroundcolor=\color{gray!10},
+  showstringspaces=false
+}
+In this section, you'll be implementing a naive Bayes text classification by minimizing the loss function (i.e., the negative log likelihood). 
+
+Before you begin, please install \texttt{pytorch 2.6.0} under \texttt{python 3.12} from \url{https://pytorch.org/} for the assignment. 
+%We will be using PyTorch 2.1.2 from \url{https://pytorch.org/get-started/locally/} with the \texttt{CUDA} option set to \texttt{None}, and the tqdm package -- which produces progress bar visualizations throughout your training process. 
+
+The official PyTorch website is a great resource that includes tutorials for understanding PyTorch's Tensor library and neural networks. \newline
+
+ Please read Pytorch tutorial from  \url{https://pytorch.org/tutorials/}, including the following materials:
+\begin{itemize}
+        \item Learn the Basics
+        \item Introduction to PyTorch - YouTube Series
+        \item Deep Learning with PyTorch: A 60 Minute Blitz
+        \item Learning PyTorch with Examples
+        \item What is torch.nn really?
+        \item Many other resources about Pytorch 
+        \item ...
+\end{itemize}
+
+\begin{parts}
+   
+    \part[23] We provide a jupyter notebook file (\verb|nb_classifier.ipynb|) that implements a version of naive Bayes classifier based on word embedding in Section 2. You are required to complete the missing codes from \verb|DenseMultinomialNaiveBayes| class, and the first line from \verb|nb_finetuning| function. 
+    You don’t need to modify other parts of the notebook files, except for settings and configurations based on your environment.
+    
+    Once you correctly add the notebook file, you should see the following results.
+
+    \begin{lstlisting}[language=console, breaklines, breakatwhitespace=false, columns=fullflexible, keepspaces=true, postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}},  literate={=}{=}{1}, caption={Outputs after running nb\_classifier.ipynb}]
+    ...
+Model Saved best loss: 1854.4124
+Epoch 3/10:  30%|==============================| 2346/7820 [01:07<01:16, 71.58it/s, val_loss: 1699.5958]Validation Loss: 1699.5958
+Epoch 4/10:  30%|==============================| 2346/7820 [01:07<01:16, 71.58it/s, val_loss: 1699.5958]Model Saved best loss: 1699.5958
+Epoch 4/10:  40%|==========================================| 3128/7820 [01:28<00:58, 80.47it/s, val_loss: 1645.9739]Validation Loss: 1645.9739
+Epoch 5/10:  40%|==========================================| 3128/7820 [01:29<00:58, 80.47it/s, val_loss: 1645.9739]Model Saved best loss: 1645.9739
+Epoch 5/10:  50%|=================================================| 3910/7820 [01:50<00:46, 84.11it/s, val_loss: 1616.1767]Validation Loss: 1616.1767
+Epoch 6/10:  50%|=================================================| 3910/7820 [01:50<00:46, 84.11it/s, val_loss: 1616.1767]Model Saved best loss: 1616.1767
+Epoch 6/10:  60%|=========================================================| 4692/7820 [02:11<00:40, 78.01it/s, val_loss: 1596.4801]Validation Loss: 1596.4801
+Epoch 7/10:  60%|=========================================================| 4692/7820 [02:12<00:40, 78.01it/s, val_loss: 1596.4801]Model Saved best loss: 1596.4801
+Epoch 7/10:  70%|==================================================================| 5474/7820 [02:33<00:27, 84.28it/s, val_loss: 1582.0797]Validation Loss: 1582.0797
+Epoch 8/10:  70%|==================================================================| 5474/7820 [02:34<00:27, 84.28it/s, val_loss: 1582.0797]Model Saved best loss: 1582.0797
+Epoch 8/10:  80%|=============================================================================| 6256/7820 [02:55<00:18, 83.16it/s, val_loss: 1572.0885]Validation Loss: 1572.0885
+Epoch 9/10:  80%|=============================================================================| 6256/7820 [02:56<00:18, 83.16it/s, val_loss: 1572.0885]Model Saved best loss: 1572.0885
+Epoch 9/10:  90%|=========================================================================================| 7038/7820 [03:18<00:10, 73.80it/s, val_loss: 1565.1391]Validation Loss: 1565.1391
+Epoch 10/10:  90%|=========================================================================================| 7038/7820 [03:18<00:10, 73.80it/s, val_loss: 1565.1391]Model Saved best loss: 1565.1391
+Epoch 10/10: 100%|======================================================================================================| 7820/7820 [03:40<00:00, 82.25it/s, val_loss: 1559.3582]Validation Loss: 1559.3582
+Epoch 10/10: 100%|======================================================================================================| 7820/7820 [03:40<00:00, 35.43it/s, val_loss: 1559.3582]
+Model Saved best loss: 1559.3582
+100%|===============================================================================================================| 782/782 [00:07<00:00, 102.90it/s]
+Accuracy: 0.6945
+\end{lstlisting}
+
+    \part[23] %We would like to pretrain word embeddings using Word2Vec. To this end, we provide another Jupyter notebook file, (\verb|skipgram.ipynb|) , which implements a version of the Skip-gram model with negative sampling. Similar to the previous problem, you are required to complete the missing code in the SkipGram class and fill in the first line of the nb\_finetuning function.
+%Please note that some functions in \verb|skipgram.ipynb| are the same as those in \verb|nb_classifier.ipynb|.
+
+We would like to pretrain word embeddings using Word2Vec. To this end, we provide another Jupyter notebook file, \verb|skipgram.ipynb|, which implements a version of the Skip-gram model with negative sampling. Similar to the previous problem, you are required to complete the missing code in the \verb|SkipGram| class and fill in the first line of the \verb|nb_finetuning| function.
+
+Please note that some functions in \verb|skipgram.ipynb| are the same as those in \verb|nb_classifier.ipynb|. Again, you do not need to modify other parts of the notebook files, except for settings and configurations that may depend on your environment.
+
+    %Please note that some functions from \verb|skipgram.ipynb| are the same as \verb|nb_classifier.ipynb|. 
+    %Again, we don't need to modify other parts of the notebook files, except for the setting and configuration, depending on your environment. 
+
+\begin{lstlisting}[language=console, breaklines, breakatwhitespace=false, columns=fullflexible, keepspaces=true, postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}},  literate={=}{=}{1}, caption={Outputs after running skipgram.ipynb}]
+...
+Epoch 1/10:  10%|=======| 937/9370 [03:37<29:29,  4.77it/s, val_loss: 1.8564]Validation Loss: 1.8564
+Epoch 2/10:  10%|=======| 937/9370 [03:38<29:29,  4.77it/s, val_loss: 1.8564]Model Saved best loss: 1.8564
+Epoch 2/10:  20%|=============| 1874/9370 [07:18<22:10,  5.64it/s, val_loss: 0.9520]Validation Loss: 0.9520
+Epoch 3/10:  20%|=============| 1874/9370 [07:18<22:10,  5.64it/s, val_loss: 0.9520]Model Saved best loss: 0.9520
+Epoch 3/10:  30%|===================| 2811/9370 [10:57<19:26,  5.63it/s, val_loss: 0.5876]Validation Loss: 0.5876
+Epoch 4/10:  30%|===================| 2811/9370 [10:57<19:26,  5.63it/s, val_loss: 0.5876]Model Saved best loss: 0.5876
+Epoch 4/10:  40%|===========================| 3748/9370 [14:34<16:37,  5.64it/s, val_loss: 0.4557]Validation Loss: 0.4557
+Epoch 5/10:  40%|===========================| 3748/9370 [14:35<16:37,  5.64it/s, val_loss: 0.4557]Model Saved best loss: 0.4557
+Epoch 5/10:  50%|===============================| 4685/9370 [18:14<13:49,  5.65it/s, val_loss: 0.4033]Validation Loss: 0.4033
+Epoch 6/10:  50%|===============================| 4685/9370 [18:15<13:49,  5.65it/s, val_loss: 0.4033]Model Saved best loss: 0.4033
+Epoch 6/10:  60%|====================================| 5622/9370 [21:53<11:06,  5.62it/s, val_loss: 0.3795]Validation Loss: 0.3795
+Epoch 7/10:  60%|====================================| 5622/9370 [21:54<11:06,  5.62it/s, val_loss: 0.3795]Model Saved best loss: 0.3795
+Epoch 7/10:  70%|==========================================| 6559/9370 [25:34<08:19,  5.63it/s, val_loss: 0.3680]Validation Loss: 0.3680
+Epoch 8/10:  70%|==========================================| 6559/9370 [25:34<08:19,  5.63it/s, val_loss: 0.3680]Model Saved best loss: 0.3680
+Epoch 8/10:  80%|=================================================| 7496/9370 [29:12<05:32,  5.64it/s, val_loss: 0.3616]Validation Loss: 0.3616
+Epoch 9/10:  80%|=================================================| 7496/9370 [29:12<05:32,  5.64it/s, val_loss: 0.3616]Model Saved best loss: 0.3616
+Epoch 9/10:  90%|=========================================================| 8433/9370 [32:53<02:46,  5.64it/s, val_loss: 0.3580]Validation Loss: 0.3580
+Epoch 10/10:  90%|========================================================| 8433/9370 [32:53<02:46,  5.64it/s, val_loss: 0.3580]Model Saved best loss: 0.3580
+Epoch 10/10: 100%|==========================================================================| 9370/9370 [36:33<00:00,  5.61it/s, val_loss: 0.3556]Validation Loss: 0.3556
+Epoch 10/10: 100%|==========================================================================| 9370/9370 [36:33<00:00,  4.27it/s, val_loss: 0.3556]Model Saved best loss: 0.3556
+\end{lstlisting}
+    \part[10] Revise the jupyter notebook file (\sloppy{\verb|nb_classifier.ipynb|}) to create (\sloppy{\verb|nb_classifier_pretrained.ipynb|}), where the word embedding parameterss of the classifier model is first initialized by the pretrained word embedding obtained from   \verb|skipgram.ipynb|. 
+    Please note that you will need to use a different directory to store the best model, distinguishing it from the run without the pretrained word embeddings.
+   
+     %%Please use qa different directory When stroring the best model 
+    
+\end{parts}
+
+%\input{dep_parses.tex}
+

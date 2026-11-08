@@ -1,0 +1,73 @@
+\titledquestion{Naive Bayesian Text Classifier}[24] 
+In text classification, a text $\mathbf{x}$ is treated as a sequence of words, i.e., $\mathbf{x} = \left( w_1, \cdots, w_n \right)$.
+
+The Naïve Bayes model for text classification assumes that words are generated independently, and thus uses the posterior probability as follows:
+\begin{equation}
+P(y = k \mid \mathbf{x}) = \frac{\prod_{i=1}^n P(w_i \mid y = k) P(y = k)}{P(\mathbf{x})}
+\end{equation}
+
+
+
+\begin{parts}
+
+    \part[3]Consider the frequency-based estimator for the word generative probability
+$P(w_i \mid y = k)$, given by:
+    \begin{equation}
+        P(w_i \mid y = k) \approx \frac{c(w_i, y = k)}{\sum_j c(w_j, y = k)}
+    \end{equation}
+    where \( c(w_i, y = k) \) is the count (or \textbf{frequency}) of word \( w_i \)  
+    appearing in texts belonging to class \( k \), (\( y = k \)) in the dataset \( \mathcal{D} = \left\{ (\mathbf{x}_i, y_i) \right\}_{i=1}^N \), and         \( \sum_j c(w_j, y = k) \) is the \textbf{total count} of all words  
+    appearing in texts belonging to class \( k \), (\( y = k \)).
+    
+    What is the problem with the frequency-based estimator?
+
+
+    \part[21] We model the word generative probability
+$P(w_i \mid y = k)$ using word embeddings as follows:
+    \begin{equation}
+    P(w_i \mid y = k) = \mathrm{softmax}_i\left( \mathbf{v}_i^\top \mathbf{c}_k \right) = \frac{\exp\left( \mathbf{v}_i^\top \mathbf{c}_k \right)}{\sum_{j \in \mathcal{V}} \exp\left( \mathbf{v}_j^\top \mathbf{c}_k \right)}
+    \label{eq_softmax_word_generative_probability}
+    \end{equation}
+
+    Consider the negative log-likelihood as the objective (loss) function for the Naïve Bayes model, defined as follows:
+\begin{eqnarray}
+    Loss &=& - \sum_{ ({\mathbf{x}}, k)\in {\mathcal{D}}} \log P\left ({\mathbf{x},y=k} \right) \nonumber \\
+    &=& - \sum_{ ({\mathbf{x}},k)\in {\mathcal{D}}} \log P\left ({\mathbf{x}}|y=k \right) P(y=k) \nonumber \\
+    &=& - \sum_{ ({\mathbf{x}}, k)\in {\mathcal{D}}} \log \left( \prod_{ w_i \in {\mathbf{x}}} P(w_i|y=k) \right) P(y=k) \nonumber \\
+    &=& - \underbrace{\sum_{ ({\mathbf{x}}, k)\in {\mathcal{D}}} \sum_{ w_i \in {\mathbf{x}}} \log P(w_i|y=k) }_{\mbox{conditional likelihood part}}
+    -  \underbrace{\sum_{k=1}^{K} N_k  \log P(y=k)}_{\mbox{prior part}} 
+    \label{eq_naive_bayes_loss}
+\end{eqnarray}
+
+    \begin{subparts}
+\subpart[8] Suppose the word embedding matrix is given by:
+\begin{equation}    
+\mathbf{V} = 
+\begin{bmatrix}
+\mathbf{v}_1^{\top} \\
+\vdots \\
+\mathbf{v}_{|\mathcal{V}|}^{\top}
+\end{bmatrix}
+\end{equation}
+
+
+Derive the Jacobian matrix of the loss $\mathit{Loss}$ in Eq.~(\ref{eq_naive_bayes_loss}) with respect to $\mathbf{V}$, expressed as:
+\begin{equation}
+    \frac{\partial Loss}{\partial {\mathbf{V}} } = 
+\end{equation}
+
+
+\subpart[5]
+Derive the Jacobian matrix of the loss $\mathit{Loss}$ in Eq.~(\ref{eq_naive_bayes_loss}) with respect to ${\mathbf{c}}_k$, expressed as:
+\begin{equation}
+    \frac{\partial Loss}{\partial {\mathbf{c}}_k } = 
+\end{equation}
+
+
+\subpart[8]
+Note that the denominator in Eq.~(\ref{eq_softmax_word_generative_probability}) involves a summation of exponentiated logits over all words.
+If you choose to use a negative sampling method, as in word2vec (i.e., skip-gram with negative sampling), how would you revise the loss function?
+Here, it is not necessary to preserve the precise form of the joint likelihood.
+
+    \end{subparts}
+\end{parts}
